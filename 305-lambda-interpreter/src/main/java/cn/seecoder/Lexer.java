@@ -77,6 +77,8 @@ public class Lexer {
 
         }
         token = new Token(Token.LCID, sb.toString());
+        System.out.println(token);
+
         return token;
     }
 

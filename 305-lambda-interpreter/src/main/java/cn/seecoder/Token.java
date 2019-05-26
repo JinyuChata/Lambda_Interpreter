@@ -53,6 +53,6 @@ public class Token {
                 typeStr = "FALSE";
 
         }
-        return typeStr + (value == null ? "" : ": " + value);
+        return typeStr;
     }
 }
