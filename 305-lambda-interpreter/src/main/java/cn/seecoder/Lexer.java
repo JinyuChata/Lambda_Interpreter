@@ -56,7 +56,7 @@ public class Lexer {
         Matcher pSMatcher = pSpace.matcher(Character.toString(nextChr));
         if (pSMatcher.find()) {
             index++;
-            return nextTokenWithPrint();
+            return nextToken();
         }
 
         Pattern pDigit = Pattern.compile("[a-z]");
