@@ -126,61 +126,8 @@ public class Interpreter {
 
     public static void main(String[] args) {
         // write your code here
-
-
-        String[] sources = {
-                ZERO,//0
-                ONE,//1
-                TWO,//2
-                THREE,//3
-                app(PLUS, ZERO, ONE),//4
-                app(PLUS, TWO, THREE),//5
-                app(POW, TWO, TWO),//6
-                app(PRED, ONE),//7
-                app(PRED, TWO),//8
-                app(SUB, FOUR, TWO),//9
-                app(AND, TRUE, TRUE),//10
-                app(AND, TRUE, FALSE),//11
-                app(AND, FALSE, FALSE),//12
-                app(OR, TRUE, TRUE),//13
-                app(OR, TRUE, FALSE),//14
-                app(OR, FALSE, FALSE),//15
-                app(NOT, TRUE),//16
-                app(NOT, FALSE),//17
-                app(IF, TRUE, TRUE, FALSE),//18
-                app(IF, FALSE, TRUE, FALSE),//19
-                app(IF, app(OR, TRUE, FALSE), ONE, ZERO),//20
-                app(IF, app(AND, TRUE, FALSE), FOUR, THREE),//21
-                app(ISZERO, ZERO),//22
-                app(ISZERO, ONE),//23
-                app(LEQ, THREE, TWO),//24
-                app(LEQ, TWO, THREE),//25
-                app(EQ, TWO, FOUR),//26
-                app(EQ, FIVE, FIVE),//27
-                app(MAX, ONE, TWO),//28
-                app(MAX, FOUR, TWO),//29
-                app(MIN, ONE, TWO),//30
-                app(MIN, FOUR, TWO),//31
-        };
-
-        for(int i=0 ; i<sources.length; i++) {
-
-
-            String source = sources[i];
-
-            System.out.println(i+":"+source);
-
-            Lexer lexer = new Lexer(source);
-
-            Parser parser = new Parser(lexer);
-
-            Interpreter interpreter = new Interpreter(parser);
-
-            AST result = interpreter.eval();
-
-            System.out.println(i+":" + result.toString());
-
-        }
-
+        Lexer lexer = new Lexer(app(PRED, ONE));
+        Parser parser = new Parser(lexer);
+        AST ast = parser.parse();
     }
 }

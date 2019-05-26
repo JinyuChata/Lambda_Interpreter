@@ -11,7 +11,13 @@ public class Lexer {
 
     public Lexer(String s) {
         source = s;
-        token = nextToken();
+        token = nextTokenWithPrint();
+    }
+
+    public Token nextTokenWithPrint() {
+        Token tmp = nextToken();
+        System.out.println(tmp);
+        return tmp;
     }
 
     public Token nextToken() {
@@ -50,7 +56,7 @@ public class Lexer {
         Matcher pSMatcher = pSpace.matcher(Character.toString(nextChr));
         if (pSMatcher.find()) {
             index++;
-            return nextToken();
+            return nextTokenWithPrint();
         }
 
         Pattern pDigit = Pattern.compile("[a-z]");
@@ -77,8 +83,6 @@ public class Lexer {
 
         }
         token = new Token(Token.LCID, sb.toString());
-        System.out.println(token);
-
         return token;
     }
 
@@ -97,7 +101,8 @@ public class Lexer {
 
     public boolean skip(int tokenType) {
         if (next(tokenType)) {
-            token = nextToken();
+//            System.out.println(token);
+            token = nextTokenWithPrint();
             return true;
         }
         return false;
@@ -106,19 +111,16 @@ public class Lexer {
     //
     public void match(int tokenType) {
         assert next(tokenType);
-        token = nextToken();
+//        System.out.println(token);
+        token = nextTokenWithPrint();
     }
 //
     public Token token(int tokenType) {
         Token tmp = token;
-        token = nextToken();
+//        System.out.println(token);
+        token = nextTokenWithPrint();
         return tmp;
     }
 
-    public Token token() {
-        Token tmp = token;
-        token = nextToken();
-        return tmp;
-    }
 }
 
