@@ -1,7 +1,7 @@
 package cn.seecoder;
 
 public class Identifier extends AST{
-    int param;
+    int param;  // 德布鲁因值
     String name = "";
 
     public Identifier(int param, String name) {
