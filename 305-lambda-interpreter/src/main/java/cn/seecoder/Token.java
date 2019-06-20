@@ -20,6 +20,12 @@ public class Token {
         this.value = value;
     }
 
+    /**
+     * 供给Parser得到index使用
+     *
+     * @param obj 比较的对象
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Token)) return false;
